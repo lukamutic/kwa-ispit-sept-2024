@@ -1,0 +1,209 @@
+<!--<!doctype html>-->
+<!--<html lang="!">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
+<!--    <link rel="stylesheet" href="./assets/css/main.css">-->
+<!--    <title>KWA ispit</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<header class="bg-primary text-white text-center py-4">-->
+<!--    <h1>Digitalna Prodavnica Odeće</h1>-->
+<!--</header>-->
+
+<!--<div class="container my-5">-->
+<!--    <div id="auth-message">-->
+<!--        &lt;!&ndash; Ovde će se dinamički prikazivati poruka o prijavi ako korisnik nije prijavljen &ndash;&gt;-->
+<!--    </div>-->
+
+<!--    <div id="store-content" style="display: none;">-->
+<!--        &lt;!&ndash; Dugme za pregled korpe &ndash;&gt;-->
+<!--        <button class="btn btn-secondary mb-4" onclick="updateCartDisplay()">Pregledaj korpu</button>-->
+
+<!--        &lt;!&ndash; Pretraga proizvoda &ndash;&gt;-->
+<!--        <div class="row mb-4">-->
+<!--            <div class="col-md-6">-->
+<!--                <input type="text" id="searchInput" class="form-control" placeholder="Pretraži proizvode po nazivu...">-->
+<!--            </div>-->
+<!--            <div class="col-md-2">-->
+<!--                <button class="btn btn-primary" onclick="searchProducts()">Pretraži</button>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Lista proizvoda &ndash;&gt;-->
+<!--        <div class="row" id="product-list">-->
+<!--            &lt;!&ndash; Proizvodi će se dinamički dodavati ovde putem JavaScript-a &ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Modal za prikaz detalja o proizvodu &ndash;&gt;-->
+<!--<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-lg">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="productModalLabel">Detalji o proizvodu</h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                &lt;!&ndash; Ovde će se dinamički ubaciti detalji o proizvodu &ndash;&gt;-->
+<!--                <div id="productDetailContent"></div>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>-->
+<!--                <button type="button" class="btn btn-primary" id="addToCartBtn">Dodaj u korpu</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Modal za prikaz korpe &ndash;&gt;-->
+<!--<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="cartModalLabel">Korpa</h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body" id="cartContent">-->
+<!--                &lt;!&ndash; Sadržaj korpe će biti prikazan ovde &ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>-->
+<!--                <a href="./checkout.html" class="btn btn-primary">Naruči</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"-->
+<!--        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="./assets/js/main.js"></script>-->
+<!--<script>-->
+<!--    document.addEventListener("DOMContentLoaded", checkSession);-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!doctype html>
+<html lang="!">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <title>KWA ispit</title>
+</head>
+<body>
+<header class="bg-primary text-white text-center py-4">
+    <h1>Digitalna Prodavnica Odeće</h1>
+</header>
+
+<div class="container my-5">
+    <div id="auth-message">
+        <!-- Ovde će se dinamički prikazivati poruka o prijavi ako korisnik nije prijavljen -->
+    </div>
+
+    <div id="store-content" style="display: none;">
+        <div class="container mb-3 text-end">
+            <!-- Link za profil koji će biti prikazan samo ako je korisnik prijavljen -->
+            <a href="./profile.html" class="btn btn-link">Moj profil</a>
+        </div>
+
+        <!-- Dugme za pregled korpe -->
+        <button class="btn btn-secondary mb-4" onclick="updateCartDisplay()">Pregledaj korpu</button>
+
+        <!-- Pretraga proizvoda -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <input type="text" id="searchInput" class="form-control" placeholder="Pretraži proizvode po nazivu...">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" onclick="searchProducts()">Pretraži</button>
+            </div>
+        </div>
+
+        <!-- Lista proizvoda -->
+        <div class="row" id="product-list">
+            <!-- Proizvodi će se dinamički dodavati ovde putem JavaScript-a -->
+        </div>
+    </div>
+</div>
+
+<!-- Modal za prikaz detalja o proizvodu -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel">Detalji o proizvodu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Ovde će se dinamički ubaciti detalji o proizvodu -->
+                <div id="productDetailContent"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary" id="addToCartBtn">Dodaj u korpu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal za prikaz korpe -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">Korpa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="cartContent">
+                <!-- Sadržaj korpe će biti prikazan ovde -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                <a href="./checkout.html" class="btn btn-primary">Naruči</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script src="./assets/js/main.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+        const authMessageElement = document.getElementById('auth-message');
+        const storeContentElement = document.getElementById('store-content');
+
+        if (!loggedInUser) {
+            // Ako korisnik nije prijavljen, prikaži poruku i dugmad za login/registraciju
+            authMessageElement.innerHTML = `
+                <div class="alert alert-info text-center">
+                    <h4>Potrebno je da se ulogujete kako biste pristupili prodavnici</h4>
+                    <div class="mt-4">
+                        <a href="./login.html" class="btn btn-primary me-3">Prijavi se</a>
+                        <a href="./register.html" class="btn btn-secondary">Registruj se</a>
+                    </div>
+                </div>
+            `;
+        } else {
+            // Ako je korisnik prijavljen, prikaži sadržaj prodavnice i link za profil
+            authMessageElement.innerHTML = '';
+            storeContentElement.style.display = 'block';
+        }
+
+        // Učitaj proizvode
+        loadProducts();
+    });
+</script>
+</body>
+</html>

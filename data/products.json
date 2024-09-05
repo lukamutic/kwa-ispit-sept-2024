@@ -1,0 +1,255 @@
+[
+  {
+    "id": 1,
+    "name": "Majica kratkih rukava",
+    "type": "Sportska odeća",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "manufacturer": "Nike",
+    "price": 2500,
+    "status": "ima na stanju",
+    "image": "assets/images/majica01.png",
+    "genders": [
+      "muški",
+      "unisex"
+    ],
+    "rating": 4.5,
+    "reviews": [
+      {
+        "user": "Marko Marković",
+        "comment": "Odlična majica!",
+        "rating": 5
+      },
+      {
+        "user": "Ana Anić",
+        "comment": "Vrlo udobna, preporučujem.",
+        "rating": 4
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Kombinezon",
+    "type": "Letnja odeća",
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "manufacturer": "Adidas",
+    "price": 4500,
+    "status": "ima na stanju",
+    "image": "assets/images/kombinezon.png",
+    "genders": [
+      "ženski"
+    ],
+    "rating": 5,
+    "reviews": [
+      {
+        "user": "Jovan Jović",
+        "comment": "Lagan, a kvalitetan materijal.",
+        "rating": 5
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Elegantna haljina",
+    "type": "Svečana odeća",
+    "sizes": [
+      "S",
+      "M"
+    ],
+    "manufacturer": "Zara",
+    "price": 7500,
+    "status": "ima na stanju",
+    "image": "assets/images/haljina-01.png",
+    "genders": [
+      "ženski"
+    ],
+    "rating": 4,
+    "reviews": [
+      {
+        "user": "Milica Milić",
+        "comment": "Prelepa haljina, idealna za svaku priliku.",
+        "rating": 5
+      },
+      {
+        "user": "Jelena Jovanović",
+        "comment": "Dobro stoji, ali je malo tesna.",
+        "rating": 3
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Sportski šorc",
+    "type": "Sportska odeća",
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "manufacturer": "Puma",
+    "price": 2200,
+    "status": "nema na stanju",
+    "image": "assets/images/sorts-sport.png",
+    "genders": [
+      "muški",
+      "unisex"
+    ],
+    "rating": 4.2,
+    "reviews": []
+  },
+  {
+    "id": 5,
+    "name": "Zimska jakna",
+    "type": "Zimska odeća",
+    "sizes": [
+      "M",
+      "L"
+    ],
+    "manufacturer": "North Face",
+    "price": 15000,
+    "status": "ima na stanju",
+    "image": "assets/images/zimska-jakna.png",
+    "genders": [
+      "unisex"
+    ],
+    "rating": 4.8,
+    "reviews": [
+      {
+        "user": "Petar Petrović",
+        "comment": "Odlična jakna za hladne dane.",
+        "rating": 5
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Klasnična košulja",
+    "type": "Poslovna odeća",
+    "sizes": [
+      "L",
+      "XL"
+    ],
+    "manufacturer": "H&M",
+    "price": 3500,
+    "status": "ima na stanju",
+    "image": "assets/images/kosulja.png",
+    "genders": [
+      "muški"
+    ],
+    "rating": 4.3,
+    "reviews": [
+      {
+        "user": "Ivan Ilić",
+        "comment": "Odlična za poslovne sastanke.",
+        "rating": 4
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Lagana letnja haljina",
+    "type": "Svečana odeća",
+    "sizes": [
+      "S",
+      "M"
+    ],
+    "manufacturer": "Mango",
+    "price": 5000,
+    "status": "ima na stanju",
+    "image": "assets/images/letnja-haljina.png",
+    "genders": [
+      "ženski"
+    ],
+    "rating": 4.7,
+    "reviews": [
+      {
+        "user": "Marija Marić",
+        "comment": "Odlična za letnje večeri.",
+        "rating": 5
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Kaput",
+    "type": "Zimska odeća",
+    "sizes": [
+      "M",
+      "L"
+    ],
+    "manufacturer": "Tommy Hilfiger",
+    "price": 12000,
+    "status": "nema na stanju",
+    "image": "assets/images/kaput.png",
+    "genders": [
+      "muški, unisex"
+    ],
+    "rating": 4.6,
+    "reviews": []
+  },
+  {
+    "id": 9,
+    "name": "Sportske patike",
+    "type": "Sportska obuća",
+    "sizes": [
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "manufacturer": "Nike",
+    "price": 9000,
+    "status": "ima na stanju",
+    "image": "assets/images/patike.png",
+    "genders": [
+      "muški",
+      "unisex"
+    ],
+    "rating": 4.9,
+    "reviews": [
+      {
+        "user": "Nikola Nikolić",
+        "comment": "Vrlo udobne i lagane.",
+        "rating": 5
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Elegantne cipele",
+    "type": "Poslovna obuća",
+    "sizes": [
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "42"
+    ],
+    "manufacturer": "Bata",
+    "price": 12000,
+    "status": "ima na stanju",
+    "image": "assets/images/cipele.png",
+    "genders": [
+      "ženski"
+    ],
+    "rating": 4.7,
+    "reviews": [
+      {
+        "user": "Lazar Lazić",
+        "comment": "Savršene za poslovne prilike.",
+        "rating": 5
+      }
+    ]
+  }
+]
