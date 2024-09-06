@@ -1,32 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="Luka Mutić">
     <title>Registracija</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
-<div class="container my-5">
-    <h2 class="text-center mb-4">Registracija</h2>
-    <form id="registerForm">
-        <div class="mb-3">
-            <label for="username" class="form-label">Korisničko ime</label>
-            <input type="text" class="form-control" id="username" required>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" required>
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Lozinka</label>
-            <input type="password" class="form-control" id="password" required>
-        </div>
-        <button type="button" class="btn btn-primary" onclick="registerUser()">Registruj se</button>
-    </form>
-</div>
-
-<script src="../assets/js/auth.js"></script>
+<header class="bg-primary text-white text-center py-4">
+    <h1>Digitalna Prodavnica Odeće</h1>
+</header>
+<main>
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Registracija</h2>
+        <form id="registerForm">
+            <div class="mb-3">
+                <label for="username" class="form-label">Korisničko ime</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Lozinka</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="registerUser()">Registruj se</button>
+            <button type="button" class="btn btn-secondary" onclick="goBack()">Nazad</button>
+        </form>
+    </div>
+</main>
+<script src="./assets/js/auth.js"></script>
 </body>
 </html>

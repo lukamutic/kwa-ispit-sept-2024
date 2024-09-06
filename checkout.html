@@ -9,35 +9,39 @@
     <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
-<div class="container my-5">
-    <h1 class="text-center mb-4">Checkout</h1>
+<header class="bg-primary text-white text-center py-4">
+    <h1>Digitalna Prodavnica Odeće</h1>
+</header>
+<main>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Checkout</h1>
 
-    <div id="orderSummary" class="mb-4">
-        <h4>Vaša narudžbina:</h4>
-        <!-- Sadržaj narudžbine će se dinamički dodati ovde -->
+        <div id="orderSummary" class="mb-4">
+            <h4>Vaša narudžbina:</h4>
+            <!-- Sadržaj narudžbine -->
+        </div>
+
+        <form id="checkoutForm">
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Ime i prezime</label>
+                <input type="text" class="form-control" id="fullName" required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Adresa</label>
+                <input type="text" class="form-control" id="address" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Telefon</label>
+                <input type="tel" class="form-control" id="phone" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="finalizeOrder()">Potvrdi narudžbinu</button>
+        </form>
     </div>
-
-    <form id="checkoutForm">
-        <div class="mb-3">
-            <label for="fullName" class="form-label">Ime i prezime</label>
-            <input type="text" class="form-control" id="fullName" required>
-        </div>
-        <div class="mb-3">
-            <label for="address" class="form-label">Adresa</label>
-            <input type="text" class="form-control" id="address" required>
-        </div>
-        <div class="mb-3">
-            <label for="phone" class="form-label">Telefon</label>
-            <input type="tel" class="form-control" id="phone" required>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" required>
-        </div>
-        <button type="button" class="btn btn-primary" onclick="finalizeOrder()">Potvrdi narudžbinu</button>
-    </form>
-</div>
-
-<script src="../assets/js/checkout.js"></script>
+</main>
+<script src="./assets/js/checkout.js"></script>
 </body>
 </html>

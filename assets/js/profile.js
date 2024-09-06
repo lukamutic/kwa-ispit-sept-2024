@@ -45,3 +45,6 @@ function goToHome() {
     window.location.href = `../index.html${params}`; // Dodaj ih na povratak
 }
 
+function goBack() {
+    window.history.back();
+}
