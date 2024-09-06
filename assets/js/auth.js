@@ -1,4 +1,3 @@
-// Registracija korisnika
 function registerUser() {
     const username = document.getElementById('username').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -11,7 +10,6 @@ function registerUser() {
 
     const users = JSON.parse(localStorage.getItem('users')) || [];
 
-    // Proveri da li korisničko ime ili email već postoji
     const userExists = users.some(user => user.username === username || user.email === email);
     if (userExists) {
         alert("Korisničko ime ili email već postoji.");
@@ -21,7 +19,7 @@ function registerUser() {
     const newUser = {
         username: username,
         email: email,
-        password: password  // Lozinka se u pravom sistemu nikada ne bi trebala čuvati u običnom tekstu
+        password: password
     };
 
     users.push(newUser);
@@ -30,7 +28,6 @@ function registerUser() {
     window.location.href = "./login.html";
 }
 
-// Prijava korisnika
 function loginUser() {
     const username = document.getElementById('loginUsername').value.trim();
     const password = document.getElementById('loginPassword').value.trim();
@@ -52,7 +49,6 @@ function loginUser() {
     }
 }
 
-// Provera sesije (da li je korisnik prijavljen)
 function checkSession() {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
     if (!user) {
@@ -62,7 +58,6 @@ function checkSession() {
     }
 }
 
-// Odjava korisnika
 function logoutUser() {
     localStorage.removeItem('loggedInUser');
     window.location.href = "../index.html";

@@ -1,10 +1,8 @@
-// Funkcija za učitavanje korpe iz `localStorage`
-function loadCart() {
+ function loadCart() {
     const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : [];
 }
 
-// Funkcija za prikaz narudžbine na checkout stranici
 function displayOrderSummary() {
     const cart = loadCart();
     const orderSummaryElement = document.getElementById('orderSummary');
@@ -35,13 +33,11 @@ function displayOrderSummary() {
     `;
 }
 
-// Funkcija za generisanje jedinstvenog broja narudžbine
 function generateOrderNumber() {
     const now = new Date();
     return `ORD-${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}-${now.getTime()}`;
 }
 
-// Funkcija za finalizaciju narudžbine sa validacijom i sprečavanjem duple narudžbine
 function finalizeOrder() {
     const fullName = document.getElementById('fullName').value.trim();
     const address = document.getElementById('address').value.trim();
@@ -49,15 +45,11 @@ function finalizeOrder() {
     const email = document.getElementById('email').value.trim();
     const orderButton = document.querySelector('button[onclick="finalizeOrder()"]');
 
-    // Provera validnosti emaila
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isEmailValid = emailPattern.test(email);
-
-    // Provera validnosti telefona (ovde možeš prilagoditi pravilo za telefon)
-    const phonePattern = /^\d{10,15}$/; // Provera za brojeve od 10 do 15 cifara
+    const phonePattern = /^\d{10,15}$/;
     const isPhoneValid = phonePattern.test(phone);
 
-    // Proveri da li su svi podaci uneti i validni
     if (!fullName || !address || !isPhoneValid || !isEmailValid) {
         let errorMessage = 'Molimo unesite ispravne podatke:\n';
 
@@ -78,7 +70,6 @@ function finalizeOrder() {
         return;
     }
 
-    // Onemogući dugme za slanje kako bi se izbegla duplirana narudžbina
     orderButton.disabled = true;
     orderButton.innerText = "Narudžbina je poslata";
 
@@ -86,7 +77,6 @@ function finalizeOrder() {
     const orderNumber = generateOrderNumber();
     const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
-    // Prikaz obaveštenja o uspešnoj narudžbini
     const orderSummaryElement = document.getElementById('orderSummary');
     orderSummaryElement.innerHTML = `
         <div class="alert alert-success" role="alert">
@@ -99,19 +89,12 @@ function finalizeOrder() {
         <button class="btn btn-primary mt-3" onclick="goToHome()">Vrati se na početnu stranicu</button>
     `;
 
-    // Očisti samo `cart` iz `localStorage`, zadrži `loggedInUser` i `users`
     localStorage.removeItem('cart');
 }
 
-// Funkcija za preusmeravanje na početnu stranicu
-// function goToHome() {
-//     window.location.href = "../index.html"; // Relativna putanja iz `pages` direktorijuma do `index.html`
-// }
 function goToHome() {
-    const params = window.location.search; // Ovo uzima sve parametre iz trenutnog URL-a
-    window.location.href = `../index.html${params}`; // Dodaj ih na povratak
+    const params = window.location.search;
+    window.location.href = `../index.html${params}`;
 }
 
-
-// Kada se stranica učita, prikaži narudžbinu
 document.addEventListener("DOMContentLoaded", displayOrderSummary);

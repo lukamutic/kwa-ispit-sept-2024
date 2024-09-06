@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Popuni formu sa trenutnim podacima korisnika
     document.getElementById('username').value = loggedInUser.username;
     document.getElementById('email').value = loggedInUser.email;
     document.getElementById('password').value = loggedInUser.password;
@@ -24,11 +23,9 @@ function updateProfile() {
         return;
     }
 
-    // Ažuriraj podatke u localStorage
     loggedInUser.email = email;
     loggedInUser.password = password;
 
-    // Ažuriraj podatke i u listi korisnika
     const userIndex = users.findIndex(user => user.username === loggedInUser.username);
     if (userIndex !== -1) {
         users[userIndex] = loggedInUser;
@@ -41,8 +38,8 @@ function updateProfile() {
 }
 
 function goToHome() {
-    const params = window.location.search; // Ovo uzima sve parametre iz trenutnog URL-a
-    window.location.href = `../index.html${params}`; // Dodaj ih na povratak
+    const params = window.location.search;
+    window.location.href = `../index.html${params}`;
 }
 
 function goBack() {

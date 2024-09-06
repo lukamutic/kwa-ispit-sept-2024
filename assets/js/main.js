@@ -1,20 +1,17 @@
-let products = []; // Globalna promenljiva za čuvanje proizvoda
-let cart = []; // Globalna promenljiva za čuvanje proizvoda u korpi
-let cartModal; // Globalna promenljiva za modalni prozor
+let products = [];
+let cart = [];
+let cartModal;
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Inicijalizuj modal samo jednom kada je DOM potpuno učitan
     cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
 
-    // Učitaj korpu iz Local Storage
     loadCart();
 
-    // Učitaj proizvode iz JSON fajla
     fetch('data/products.json')
         .then(response => response.json())
         .then(data => {
-            products = data; // Dodeli učitane proizvode globalnoj promenljivoj
-            displayProducts(products); // Prikaži proizvode na stranici
+            products = data;
+            displayProducts(products);
         })
         .catch(error => console.error('Greška prilikom učitavanja proizvoda:', error));
 });
@@ -104,21 +101,21 @@ function addToCart(productId) {
         cart.push(cartItem);
     }
 
-    saveCart(); // Sačuvaj stanje korpe u Local Storage
+    saveCart();
     alert(`${product.name} je dodat u korpu!`);
-    updateCartDisplay(); // Ažuriraj prikaz korpe
+    updateCartDisplay();
 }
 
 function updateQuantity(index, newQuantity) {
     cart[index].quantity = parseInt(newQuantity, 10);
-    saveCart(); // Sačuvaj ažuriranu korpu
-    updateCartDisplay(); // Ažuriraj prikaz korpe nakon promene količine
+    saveCart();
+    updateCartDisplay();
 }
 
 function removeFromCart(index) {
-    cart.splice(index, 1); // Ukloni proizvod iz korpe
-    saveCart(); // Sačuvaj ažuriranu korpu
-    updateCartDisplay(); // Ažuriraj prikaz korpe nakon brisanja proizvoda
+    cart.splice(index, 1);
+    saveCart();
+    updateCartDisplay();
 }
 
 function calculateTotal() {
@@ -149,7 +146,7 @@ function updateCartDisplay() {
         console.error('Element sa ID-jem "cartContent" nije pronađen.');
     }
 
-    cartModal.show(); // Prikaži već inicijalizovan modal
+    cartModal.show();
 }
 
 function saveCart() {
@@ -164,11 +161,9 @@ function loadCart() {
 }
 
 function proceedToCheckout() {
-    // Preusmeravanje na checkout.html stranicu
     window.location.href = "checkout.html";
 }
 
-// Dodaj event listenere za filtriranje
 const filterCategoryElement = document.getElementById('filterCategory');
 const filterPriceElement = document.getElementById('filterPrice');
 const filterRatingElement = document.getElementById('filterRating');
@@ -198,7 +193,7 @@ function showProductDetail(productId) {
     window.location.href = `./product.html?id=${productId}`;
 }
 
-let selectedProductId = null; // Globalna promenljiva za praćenje proizvoda
+let selectedProductId = null;
 
 function showProductDetail(productId) {
     const product = products.find(p => p.id === productId);
@@ -208,10 +203,8 @@ function showProductDetail(productId) {
         return;
     }
 
-    // Sačuvaj ID proizvoda za dodavanje u korpu
     selectedProductId = productId;
 
-    // Popuni modal detaljima o proizvodu
     const productDetailContent = document.getElementById('productDetailContent');
     productDetailContent.innerHTML = `
         <div class="row">
@@ -232,12 +225,10 @@ function showProductDetail(productId) {
         </div>
     `;
 
-    // Prikaži modal
     const productModal = new bootstrap.Modal(document.getElementById('productModal'));
     productModal.show();
 }
 
-// Funkcija za prikaz recenzija (reviews)
 function loadReviews(reviews) {
     if (!reviews || reviews.length === 0) {
         return "<p>Nema komentara za ovaj proizvod.</p>";
@@ -252,12 +243,10 @@ function loadReviews(reviews) {
     `).join('');
 }
 
-// Funkcija za dodavanje proizvoda u korpu iz modala
 document.getElementById('addToCartBtn').addEventListener('click', function () {
     const quantity = parseInt(document.getElementById('modalQuantity').value, 10);
     addToCart(selectedProductId, quantity);
 
-    // Zatvori modal posle pola sekunde (500 ms)
     setTimeout(function () {
         const productModal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
         productModal.hide();
@@ -288,20 +277,18 @@ function addToCart(productId, quantityFromModal = 1) {
         cart.push(cartItem);
     }
 
-    saveCart(); // Sačuvaj stanje korpe u Local Storage
+    saveCart();
     alert(`${product.name} je dodat u korpu!`);
-    updateCartDisplay(); // Ažuriraj prikaz korpe
+    updateCartDisplay();
 }
 
 
-// Provera statusa prijave (da li je korisnik prijavljen)
 function checkSession() {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
     const authMessageElement = document.getElementById('auth-message');
     const storeContentElement = document.getElementById('store-content');
 
     if (!user) {
-        // Ako korisnik nije prijavljen, prikaži poruku i dugmad za login/registraciju
         authMessageElement.innerHTML = `
             <div class="alert alert-info text-center">
                 <h4>Potrebno je da se ulogujete kako biste pristupili prodavnici</h4>
@@ -312,17 +299,14 @@ function checkSession() {
             </div>
         `;
     } else {
-        // Ako je korisnik prijavljen, ukloni poruku i prikaži sadržaj prodavnice
         authMessageElement.innerHTML = '';
         storeContentElement.style.display = 'block';
-        loadProducts(); // Prikaži proizvode
+        loadProducts();
     }
 }
 
-// Funkcija za prikaz proizvoda (koju već koristiš u main.js)
 function loadProducts() {
     const productListElement = document.getElementById('product-list');
-    // Ovde dolazi tvoja postojeća logika za dinamičko dodavanje proizvoda
     productListElement.innerHTML = `
         <div class="col-md-4 mb-4">
             <div class="card">
@@ -336,6 +320,4 @@ function loadProducts() {
         </div>
     `;
 }
-
-// Prikaz proizvoda će koristiti tvoju funkciju za dinamičko popunjavanje liste proizvoda.
 
